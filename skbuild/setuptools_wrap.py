@@ -715,6 +715,7 @@ def setup(*args, **kw):  # noqa: C901
         original_package_data = kw.get("package_data", {}).copy()
         _consolidate_package_data_files(original_package_data, package_prefixes, hide_listing)
 
+        print(f"package_prefixes: {package_prefixes}")
         for data_file in original_manifestin_data_files:
             dest_data_file = os.path.join(CMAKE_INSTALL_DIR(), skbuild_kw["cmake_install_dir"], data_file)
             print(f" - copying manifest file {dest_data_file}")
