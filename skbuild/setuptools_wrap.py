@@ -955,9 +955,11 @@ def _consolidate_package_modules(cmake_source_dir, packages, package_dir, py_mod
 
         (package, _, src_module_file) = entry
 
+        print(CMAKE_INSTALL_DIR())
         # Copy missing module file
         if os.path.exists(src_module_file):
             dest_module_file = os.path.join(CMAKE_INSTALL_DIR(), src_module_file)
+            print(" - consolidating")
             _copy_file(src_module_file, dest_module_file, hide_listing)
 
         # Since the mapping in package_data expects the package to be associated
