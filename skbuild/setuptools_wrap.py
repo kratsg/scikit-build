@@ -753,6 +753,9 @@ def setup(*args, **kw):  # noqa: C901
 
     print("")
 
+    print(f"args: {args}")
+    print(f"kwargs: {kw}")
+
     return setuptools.setup(*args, **kw)
 
 
