@@ -724,9 +724,13 @@ def setup(*args, **kw):  # noqa: C901
     kw["package_data"] = package_data
     kw["package_dir"] = {
         package: (
-            os.path.join(CMAKE_INSTALL_DIR(), prefix)
-            if os.path.exists(os.path.join(CMAKE_INSTALL_DIR(), prefix))
-            else prefix
+            os.path.join(CMAKE_INSTALL_DIR(), skbuild_kw["cmake_install_dir"], prefix)
+            if os.path.exists(os.path.join(CMAKE_INSTALL_DIR(), skbuild_kw["cmake_install_dir"], prefix))
+            else (
+                os.path.join(skbuild_kw["cmake_install_dir"], prefix)
+                if os.path.exists(os.path.join(skbuild_kw["cmake_install_dir"], prefix))
+                else prefix
+            )
         )
         for prefix, package in package_prefixes
     }
